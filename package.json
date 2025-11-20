@@ -1,0 +1,15 @@
+{
+  "name": "api-openshift",
+  "version": "1.0.0",
+  "description": "Mini proyecto para desplegar en OpenShift",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "Damian Cristea",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.0"
+  }
+}
