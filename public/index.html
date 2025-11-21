@@ -2,143 +2,175 @@
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <title>API de Tareas en OpenShift</title>
+    <title>Gestión de Tareas</title>
+
     <style>
-      body {
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-          sans-serif;
-        max-width: 800px;
-        margin: 40px auto;
-        padding: 0 16px;
-        background: #0b1120;
-        color: #e5e7eb;
-      }
+  * {
+    box-sizing: border-box;
+  }
 
-      h1 {
-        margin-bottom: 8px;
-      }
+  body {
+    margin: 0;
+    font-family: "Inter", system-ui, sans-serif;
+    background: #0f172a; /* Azul oscuro elegante */
+    color: #e2e8f0;
+    padding: 40px;
+    display: flex;
+    justify-content: center;
+  }
 
-      .muted {
-        color: #9ca3af;
-        margin-bottom: 24px;
-      }
+  .container {
+    width: 100%;
+    max-width: 700px;
+  }
 
-      form {
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-        margin-bottom: 24px;
-        padding: 16px;
-        border-radius: 8px;
-        background: #020617;
-        border: 1px solid #1f2937;
-      }
+  h1 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
 
-      label {
-        font-size: 14px;
-        color: #d1d5db;
-      }
+  p.muted {
+    color: #94a3b8;
+    margin-bottom: 30px;
+  }
 
-      input,
-      textarea {
-        padding: 8px 10px;
-        border-radius: 6px;
-        border: 1px solid #374151;
-        background: #020617;
-        color: #e5e7eb;
-        font: inherit;
-      }
+  /* Tarjeta */
+  .card {
+    background: #1e293b; /* Azul-gris muy elegante */
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+    margin-bottom: 32px;
+    border: 1px solid #334155;
+  }
 
-      button {
-        align-self: flex-start;
-        padding: 8px 14px;
-        border-radius: 6px;
-        border: none;
-        font: inherit;
-        cursor: pointer;
-        background: #22c55e;
-        color: #022c22;
-        font-weight: 600;
-      }
+  label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 6px;
+    color: #cbd5e1;
+  }
 
-      button:hover {
-        filter: brightness(1.1);
-      }
+  input,
+  textarea {
+    width: 100%;
+    padding: 10px 12px;
+    font-size: 14px;
+    border-radius: 8px;
+    border: 1px solid #334155;
+    background: #0f172a;
+    color: #e2e8f0;
+    transition: border 0.2s;
+    margin-bottom: 14px;
+  }
 
-      ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-      }
+  input:focus,
+  textarea:focus {
+    border-color: #3b82f6;
+    outline: none;
+  }
 
-      .tarea {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        gap: 8px;
-        padding: 10px 12px;
-        border-radius: 8px;
-        background: #020617;
-        border: 1px solid #1f2937;
-      }
+  button {
+    padding: 10px 16px;
+    border-radius: 8px;
+    border: none;
+    background: #3b82f6;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
 
-      .tarea h3 {
-        margin: 0 0 4px 0;
-        font-size: 15px;
-      }
+  button:hover {
+    background: #2563eb;
+  }
 
-      .tarea p {
-        margin: 0;
-        font-size: 13px;
-        color: #9ca3af;
-      }
+  h2 {
+    font-size: 22px;
+    margin-bottom: 16px;
+    color: #e2e8f0;
+  }
 
-      .tarea small {
-        font-size: 11px;
-        color: #6b7280;
-      }
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
 
-      .tarea button {
-        background: #ef4444;
-        color: #fee2e2;
-        padding: 6px 10px;
-        font-size: 12px;
-      }
+  .tarea {
+    background: #1e293b;
+    padding: 16px;
+    border-radius: 10px;
+    border: 1px solid #334155;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  }
 
-      #estado {
-        margin-top: 12px;
-        font-size: 13px;
-        min-height: 18px;
-      }
-    </style>
+  .tarea h3 {
+    margin: 0 0 4px 0;
+    font-size: 16px;
+    color: #f1f5f9;
+  }
+
+  .tarea p {
+    margin: 0;
+    color: #cbd5e1;
+  }
+
+  .tarea small {
+    color: #94a3b8;
+    font-size: 12px;
+  }
+
+  .tarea button {
+    background: #ef4444;
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+
+  .tarea button:hover {
+    background: #dc2626;
+  }
+
+  #estado {
+    margin-top: 12px;
+    color: #94a3b8;
+    min-height: 18px;
+  }
+</style>
+
   </head>
+
   <body>
-    <h1>Gestión de tareas</h1>
-    <p class="muted">
-      Ejemplo de aplicación desplegada en una PaaS (OpenShift). La interfaz habla
-      con la API <code>/tareas</code>.
-    </p>
+    <div class="container">
+      <h1>Gestión de tareas</h1>
+      <p class="muted">Aplicación desplegada en OpenShift (PaaS)</p>
 
-    <form id="form-tarea">
-      <div>
-        <label for="titulo">Título de la tarea</label>
-        <input id="titulo" name="titulo" required />
+      <!-- Formulario -->
+      <div class="card">
+        <form id="form-tarea">
+          <label for="titulo">Título de la tarea</label>
+          <input id="titulo" name="titulo" required />
+
+          <label for="descripcion">Descripción</label>
+          <textarea id="descripcion" name="descripcion" rows="2"></textarea>
+
+          <button type="submit">Añadir tarea</button>
+          <div id="estado"></div>
+        </form>
       </div>
 
-      <div>
-        <label for="descripcion">Descripción</label>
-        <textarea id="descripcion" name="descripcion" rows="2"></textarea>
-      </div>
-
-      <button type="submit">Añadir tarea</button>
-      <div id="estado"></div>
-    </form>
-
-    <h2>Lista de tareas</h2>
-    <ul id="lista-tareas"></ul>
+      <!-- Lista -->
+      <h2>Lista de tareas</h2>
+      <ul id="lista-tareas"></ul>
+    </div>
 
     <script>
       const lista = document.getElementById("lista-tareas");
@@ -149,6 +181,9 @@
         estado.textContent = "Cargando tareas...";
         try {
           const res = await fetch("/tareas");
+          if (!res.ok) {
+            throw new Error("Error GET /tareas: " + res.status);
+          }
           const datos = await res.json();
           renderTareas(datos);
           estado.textContent = "";
@@ -160,6 +195,7 @@
 
       function renderTareas(tareas) {
         lista.innerHTML = "";
+
         if (tareas.length === 0) {
           const li = document.createElement("li");
           li.textContent = "No hay tareas.";
@@ -168,11 +204,12 @@
           return;
         }
 
-        tareas.forEach((t) => {
+        tareas.forEach(function (t) {
           const li = document.createElement("li");
           li.className = "tarea";
 
           const info = document.createElement("div");
+
           const titulo = document.createElement("h3");
           titulo.textContent = t.titulo;
 
@@ -180,7 +217,7 @@
           desc.textContent = t.descripcion || "Sin descripción";
 
           const meta = document.createElement("small");
-          meta.textContent = `ID: ${t.id}`;
+          meta.textContent = "ID: " + t.id;
 
           info.appendChild(titulo);
           info.appendChild(desc);
@@ -188,9 +225,14 @@
 
           const btn = document.createElement("button");
           btn.textContent = "Eliminar";
-          btn.onclick = async () => {
+          btn.onclick = async function () {
             try {
-              await fetch(`/tareas/${t.id}`, { method: "DELETE" });
+              const res = await fetch("/tareas/" + t.id, {
+                method: "DELETE",
+              });
+              if (!res.ok) {
+                throw new Error("Error DELETE /tareas: " + res.status);
+              }
               cargarTareas();
             } catch (err) {
               console.error(err);
@@ -204,23 +246,31 @@
         });
       }
 
-      form.addEventListener("submit", async (e) => {
+      form.addEventListener("submit", async function (e) {
         e.preventDefault();
+
         const titulo = document.getElementById("titulo").value.trim();
         const descripcion = document
           .getElementById("descripcion")
           .value.trim();
 
-        if (!titulo) return;
+        if (!titulo) {
+          estado.textContent = "El título es obligatorio.";
+          return;
+        }
 
         estado.textContent = "Creando tarea...";
 
         try {
-          await fetch("/tareas", {
+          const res = await fetch("/tareas", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ titulo, descripcion }),
+            body: JSON.stringify({ titulo: titulo, descripcion: descripcion }),
           });
+
+          if (!res.ok) {
+            throw new Error("Error POST /tareas: " + res.status);
+          }
 
           form.reset();
           estado.textContent = "Tarea creada.";
