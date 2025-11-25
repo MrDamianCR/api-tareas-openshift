@@ -79,7 +79,7 @@ app.post("/tareas", (req, res) => {
   };
 
   tareas.push(nuevaTarea);
-  guardarTareasEnFichero(); // <- guardamos cambios
+  guardarTareasEnFichero(); 
   res.status(201).json(nuevaTarea);
 });
 
@@ -93,11 +93,10 @@ app.delete("/tareas/:id", (req, res) => {
   }
 
   const eliminada = tareas.splice(indice, 1)[0];
-  guardarTareasEnFichero(); // <- guardamos cambios
+  guardarTareasEnFichero(); 
   res.json(eliminada);
 });
 
-// Puerto: 8080 en local y en OpenShift
 const PORT = process.env.PORT || 8080;
 
 app.listen(PORT, "0.0.0.0", () => {
